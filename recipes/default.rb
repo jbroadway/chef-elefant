@@ -38,11 +38,12 @@ execute "untar-elefant" do
 	cwd node['elefant']['document_root']
 	command "tar --strip-components 1 -zxf #{Chef::Config[:file_cache_path]}/elefant-#{node['elefant']['version']}.tar.gz"
 	creates "#{node['elefant']['document_root']}/elefant"
+	notifies :run, "execute[elefant-permissions]", :delayed
 end
 
 execute "elefant-permissions" do
 	cwd node['elefant']['document_root']
-	command "chmod -R 777 cache conf css files lang layouts; chmod 777 apps"
+	command "chmod 777 apps && chmod -R 777 cache conf css files lang layouts"
 end
 
 apache_site "000-default" do
@@ -56,4 +57,3 @@ web_app "elefant" do
 	server_aliases node['elefant']['server_aliases']
 end
 
-log "Navigate to http://#{server_fqdn}/install/ to complete the Elefant CMS installation"
