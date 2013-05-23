@@ -1,3 +1,5 @@
+# chef-elefant
+
 ## Description
 
 This is a [Chef](http://www.opscode.com/chef/) recipe for installing
