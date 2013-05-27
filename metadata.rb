@@ -4,7 +4,7 @@ maintainer_email "johnny@johnnybroadway.com"
 license          "MIT"
 description      "Installs/configures the Elefant CMS"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          "0.8.0"
+version          "0.8.1"
 
 recipe "Elefant", "Installs and configures Elefant CMS and associated LAMP stack on a single system"
 
